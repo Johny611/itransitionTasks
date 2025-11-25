@@ -1,0 +1,41 @@
+@everyone 
+
+***TASK #2*** (FOR ALL GROUPS; checked by the bot)
+
+There are some necessary skills for every programmer — process files, calculate checksums, follow the instruction, etc. This task will help to train that.
+
+Use language of your group (PHP or Python). In principle, you can use anything else, like Java, C#, Rust or Ruby or anything you like (**you don't submit the code in this task, only the result**).
+
+1. Calculate **SHA3-256** for every file from archive (https://www.dropbox.com/s/oy2668zp1lsuseh/task2.zip?dl=1). 
+Note, **files are binary, you don’t need encodings **— if you read file to string with some encoding, 
+you have to use the same encoding to decode string into bytes back for hashing (there is a technical term for such conversions — “stupid activity”).
+
+2. Write hashes as **64 hex digits in lower case.**
+
+3. Sort hashes in the **ascending** order of the product of hex digit increased by one 
+(for example, for the hash `63a6ba9e5de66b11ad6c6d3d1b39a5456f65f918fde6250565e365d89a5196c6` the sorting key is `71365623100112242680609229940949951316513259520000000000`).
+
+4. Join **sorted hashes without any separator** (not keys used for sorting, but hashes themselves).
+
+5. Concatenate resulted string with your e-mail in **lowercase**.
+
+6. Find the SHA3-256 of the result string.
+
+Send obtained 64 hex digits in the lower case to the https://discord.com/channels/950701840901746708/1258451022800617492 channel using the following command
+```
+!task2 email 64hexdigitshere
+```
+Note: SHA3-256 is not the same algorithm as SHA-256.
+
+Some additional hints: 
+* check if you use SHA3-256, 
+* check if you process exactly 256 required files (not everything in the some directory),
+* check if you concatenate your strings without separator — beware of JavaScript's join!
+* check if you write e-mail in lower case and e-mail goes to the end of the resulted string, 
+* and, of course, you have to calculate separate hash for every file, not to update the same hash with every file.
+
+> **Never work with *binary* files in text editors** — if your IDE, e.g., changes automagically even a single byte, 
+your won't get a proper result (redownload the files if necessary).
+
+DEADLINE: next Friday (it's possible to submit several solutions, only the proper one counts).
+
