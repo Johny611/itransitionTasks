@@ -3,8 +3,6 @@ import re
 import json
 
 DB = "dbname=task_1_books user=postgres password=60891705 host=localhost"
-# This is my PostgreSQL connection string.
-# I’m connecting to the task_1_books database as the postgres user
 
 
 def ruby_to_json(text):
@@ -20,13 +18,6 @@ def ruby_to_json(text):
     return text
 
 
-# The provided file is not valid JSON. It uses Ruby-style hash syntax
-# I remove the outer [ and ] to clean the structure.
-# I use a regex to convert :key=> into "key":
-# I wrap everything back into an array.
-# Now the string is valid JSON
-
-
 def parse_price(price_str):
     price_str = price_str.strip()
 
@@ -39,14 +30,9 @@ def parse_price(price_str):
     return None, None
 
 
-# Here I extract the numeric value and store two normalized fields:
-# price_value → numeric amount
-# price_currency → ‘USD’ or ‘EUR’
-
-
 raw = open("task1_d.json", "r", encoding="utf-8").read()
 fixed_json = ruby_to_json(raw)
-# I open the raw file and pass it through my conversion function so that it becomes valid JSON
+
 
 try:
     data = json.loads(fixed_json)
@@ -54,7 +40,7 @@ except Exception as e:
     print("JSON parsing failed!")
     print(fixed_json[:500])
     raise e
-# parsing the cleaned JSON with error handling
+
 
 parsed = []
 for row in data:
@@ -71,11 +57,9 @@ for row in data:
             "price_currency": currency,
         }
     )
-# I create a clean list of dictionaries.
 
 conn = psycopg2.connect(DB)
 cur = conn.cursor()
-# Opening a connection and a cursor to run SQL queries.
 
 cur.execute(
     """
@@ -93,7 +77,6 @@ cur.execute(
     );
 """
 )
-# I drop the existing table if it exists, and recreate it with the correct column types
 
 for row in parsed:
     cur.execute(
@@ -105,7 +88,6 @@ for row in parsed:
         """,
         row,
     )
-# I insert every cleaned record into the books_raw table using parameterized SQL
 
 conn.commit()
 cur.close()
