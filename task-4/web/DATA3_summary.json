@@ -1,0 +1,20 @@
+{
+    "top_5_days": [
+        "2025-02-03",
+        "2024-07-26",
+        "2024-11-03",
+        "2024-09-06",
+        "2024-09-20"
+    ],
+    "unique_users": 3303,
+    "unique_author_sets": 268,
+    "best_author": [
+        "Coy Streich",
+        "Keeley Hand",
+        "Lela Emard"
+    ],
+    "top_buyer_cluster": [
+        49002,
+        49414
+    ]
+}

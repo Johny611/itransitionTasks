@@ -1,0 +1,60 @@
+***TASK #5_DATA*** (FOR DATA ENGINEERING GROUP)
+
+The task consists of two part.
+
+I. Generator.
+
+Create a Google Spreadsheet to implement a data source for the daily extraction of resources at various Weyland-Yutani Corporation mines.
+
+The goal is as follows: the user should be able to open the spreadsheet and adjust the parameters of data generation.
+
+The most important requirement is that the data should not be simple white noise — it must look _realistic_.
+
+The following aspects should be customizable:
+ * the names of the mines;
+ * the date range;
+ * the distribution type (at least two: uniform and normal);
+ * the distribution parameters (which should update dynamically depending on the chosen distribution);
+ * one or more smoothing parameters to add correlation between values;
+ * day-of-week factors (e.g., Sunday output reduced by 40%) to introduce periodic patterns;
+ * an overall trend;
+ * events representing spikes or drops (support at least four), each with a date, duration, magnitude, and probability(*); you may use a bell-shaped curve or similar pattern for these anomalies.
+
+Add a chart that displays the data and updates automatically when the parameters change.
+
+(*) Optionally (it's not as trivial as probability, but isn't hard) allow to specify the number of affected mines per event instead of probability.
+
+Tags: _tasks_
+
+
+Screenshot pic here
+
+
+II. Create a separate Web dashboard that accesses the data source and performs analysis on the data.
+
+Display the following — for each mine and for the total output:
+* mean daily output;
+* standard deviation;
+* median;
+* interquartile range,
+* anomalies detected by the following tests (with adjustable parameters):
+  * IQR rule,
+  * z-score,
+  * distance (percent) from moving average,
+  * Grubbs' test.
+* charts of different types (chosen by the user — line, bar, or stacked) with highlighted outliers and trendlines (chosen by the user — polynomial of degree 1, 2, 3, or 4).
+
+Provide a button that generates a detailed PDF report (everything above) containing tables and charts, and separate sections about each anomaly (spike or drop).
+
+Try to polish UI and PDF layout to make it look professional.
+
+
+*How to submit the solution*
+
+Send to p.lebedev@itransition.com:
+1. Full name.
+1. A link to the publicly accessible generator spreadsheet (anyone with the link).
+1. A link to the deployed dashboard application accessible via the Internet.
+1. A video demonstration showing the parameter manipulation in the generator spreadsheet, the dashboard refresh, and the PDF report being generated (no narration).
+
+DEADLINE is not specified, you may submit your solutions up to day when you'll get the project.
